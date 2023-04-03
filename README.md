@@ -8,10 +8,9 @@
 공통적으로 사용되는 기능을 모듈화 진행 
 각 페이지의 **READ.ME**를 읽어주세요.
 
-대표적으
 
-package of Extensions for iOS
-- Use {}.isValidation()
+- Use {String}.isValidation() 
+**이메일 유효성검사** 
 
 
 ## Requirement
@@ -31,5 +30,6 @@ Select "Up to Next Major" with 0.0.1
 
 ## Coverage
 
+<img width="614" alt="cc" src="https://user-images.githubusercontent.com/67726869/229386290-824ee43c-7b3f-4be2-a9c2-82b556f80673.png">
 
 
