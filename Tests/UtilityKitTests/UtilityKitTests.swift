@@ -23,7 +23,8 @@ final class UtilityKitTests: XCTestCase {
         XCTAssertTrue("$zzzz1111".contains())
         XCTAssertTrue("₩zzzz1111".contains())
         XCTAssertTrue("•zzzz1111".contains())
-        XCTAssertTrue("₩$€£¥'•|zzzz1111".contains())
+        XCTAssertTrue("\\zzzz1111".contains())
+        XCTAssertTrue("\\₩$€£¥'•|zzzz1111".contains())
 
     }
     
