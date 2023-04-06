@@ -33,14 +33,14 @@ extension String {
      */
     
     public func contains(_ type: checktype = .none) -> Bool{
-        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+]{8,20})$"#
+        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+\|'¥£€₩•]{8,20})$"#
         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", regex)
         if  !passwordtesting.evaluate(with: self){
             switch type {
             case .english:
-                regex = #"^(?=.*[a-zA-Z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+]{0,})$"#
+                regex = #"^(?=.*[a-zA-Z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+|'¥£€₩•]{0,})$"#
             case .number:
-                regex = #"^(?=.*[0-9])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+]{0,})$"#
+                regex = #"^(?=.*[0-9])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+|'¥£€₩•]{0,})$"#
             case .count:
                 return self.count >= 8
             default:

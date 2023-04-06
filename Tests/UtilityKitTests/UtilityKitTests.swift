@@ -15,6 +15,16 @@ final class UtilityKitTests: XCTestCase {
         XCTAssertTrue("zzss11!z11".contains())
         XCTAssertFalse("한글은안돼요".contains())
         XCTAssertFalse("🔥🔥🔥".contains())
+        XCTAssertTrue("|zzzz1111".contains())
+        XCTAssertTrue("'zzzz1111".contains())
+        XCTAssertTrue("¥zzzz1111".contains())
+        XCTAssertTrue("£zzzz1111".contains())
+        XCTAssertTrue("€zzzz1111".contains())
+        XCTAssertTrue("$zzzz1111".contains())
+        XCTAssertTrue("₩zzzz1111".contains())
+        XCTAssertTrue("•zzzz1111".contains())
+        XCTAssertTrue("₩$€£¥'•|zzzz1111".contains())
+
     }
     
     func test_문자열에_영어가_포함되어있는지() throws {
