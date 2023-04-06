@@ -33,7 +33,7 @@ extension String {
      */
     
     public func contains(_ type: checktype = .none) -> Bool{
-        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+]{8,20})$"#
+        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+\|'¥£€]{8,20})$"#
         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", regex)
         if  !passwordtesting.evaluate(with: self){
             switch type {
