@@ -31,9 +31,10 @@ extension String {
      비밀번호 입력
      영문,숫자,특수문자입력으로 8자 이상입력, 대소문자구분
      */
-    
+    // CREP-3304
+    // !@#$%^&*()-_=+<>,./?;:'"[]{}|`~₩
     public func contains(_ type: checktype = .none) -> Bool{
-        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+\|'¥£€₩•]{8,20})$"#
+        var regex = #"^(?=.*[0-9])(?=.*[a-zA-z])([a-zA-Z0-9,<.>\/?;:'"\[{\]}`~₩!@#$%^&*()-_=+\\|]{8,20})$"#
         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", regex)
         if  !passwordtesting.evaluate(with: self){
             switch type {

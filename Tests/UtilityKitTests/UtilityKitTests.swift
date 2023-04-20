@@ -17,14 +17,21 @@ final class UtilityKitTests: XCTestCase {
         XCTAssertFalse("🔥🔥🔥".contains())
         XCTAssertTrue("|zzzz1111".contains())
         XCTAssertTrue("'zzzz1111".contains())
-        XCTAssertTrue("¥zzzz1111".contains())
-        XCTAssertTrue("£zzzz1111".contains())
-        XCTAssertTrue("€zzzz1111".contains())
+        XCTAssertFalse("¥zzzz1111".contains())
+        XCTAssertFalse("£zzzz1111".contains())
+        XCTAssertFalse("€zzzz1111".contains())
         XCTAssertTrue("$zzzz1111".contains())
         XCTAssertTrue("₩zzzz1111".contains())
-        XCTAssertTrue("•zzzz1111".contains())
+        XCTAssertFalse("•zzzz1111".contains())
         XCTAssertTrue("\\zzzz1111".contains())
-        XCTAssertTrue("\\₩$€£¥'•|zzzz1111".contains())
+        XCTAssertFalse("\\₩$€£¥'•|zzzz1111".contains())
+        
+        XCTAssertTrue("zzzz1111".contains())
+        XCTAssertTrue("zzzz1111!@#$%^&*()-".contains())
+        XCTAssertTrue("zzzz1111\\".contains())
+        XCTAssertTrue("1234aaaa.,~`;:/'\"-_".contains())
+        XCTAssertTrue("1234aaaa+\\|".contains())
+        
 
     }
     
