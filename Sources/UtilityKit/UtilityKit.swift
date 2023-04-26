@@ -6,20 +6,16 @@ extension String {
         case english
         case number
         case count
+        case specialSymbols
         case none
     }
+    
     
     /**
      이메일 입력
      공백입력시 제외처리
-     /**
-      이메일 입력
-      공백입력시 제외처리
-      *@*.* 형식체크
-      */
      *@*.* 형식체크
      */
-    
     public func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,20}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -39,11 +35,13 @@ extension String {
         if  !passwordtesting.evaluate(with: self){
             switch type {
             case .english:
-                regex = #"^(?=.*[a-zA-Z])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+\|'¥£€₩•]{0,})$"#
+                regex = #"^(?=.*[a-zA-Z])([a-zA-Z0-9,<.>\/?;:'"\[{\]}`~₩!@#$%^&*()-_=+\\|]{0,})$"#
             case .number:
-                regex = #"^(?=.*[0-9])([a-zA-Z0-9,<.>/?;:’“\[{\]}`~!@#$%^&*()-_=+\|'¥£€₩•]{0,})$"#
+                regex = #"^(?=.*[0-9])([a-zA-Z0-9,<.>\/?;:'"\[{\]}`~₩!@#$%^&*()-_=+\\|]{0,})$"#
             case .count:
                 return self.count >= 8
+            case .specialSymbols:
+                regex = #"^([a-zA-Z0-9,<.>\/?;:'"\[{\]}`~₩!@#$%^&*()-_=+\\|]{0,})$"#
             default:
                 break
             }
@@ -60,11 +58,11 @@ extension String {
         case hundredThousand = "억"
         case trilion = "조"
     }
-
+    
     /**
      number :   변환 스트링
      smallestUnit: 표기 최소 단위
-            
+     
      */
     public func spelloutCurrency(smallestUnit: Unit = .tenThousand) -> String {
         
@@ -85,7 +83,7 @@ extension String {
                 tmpArray.append(tempString)
             }
         }
-
+        
         let resultArray = tmpArray.enumerated().reduce("") { partialResult, value in
             var unit: Unit = .unit
             if smallestUnit == .tenThousand {
@@ -142,11 +140,11 @@ extension String {
             }
             return partialResult + String(value.element)
         }
-
+        
         tmpArray = tmpArray.reversed().reduce("", { partialResult, value in
             return partialResult + String(value)
         })
-
+        
         if tmpArray.contains("-") {
             switch unit {
             case .tenThousand:
@@ -171,11 +169,11 @@ extension String {
             }
         }
     }
-
+    
     func appendComma() -> Self {
         var array: [String] = []
         let templateArray = Array(self)
-
+        
         for (index,item) in templateArray.enumerated() {
             let count = index + 1
             if count % 3 == 0 && templateArray.count > 3 {
@@ -215,7 +213,7 @@ extension String {
     public var toDouble: Double {
         return self.replaceToPureNumber
     }
-
+    
     
     public func substring(from: Int, to: Int) -> String {
         guard from < count, to >= 0, to - from >= 0 else {
