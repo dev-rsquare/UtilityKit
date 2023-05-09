@@ -9,6 +9,21 @@ import XCTest
 
 final class CurrencyTests: XCTestCase {
 
+    func test_suffix_값지정에따라_단위변환값이_반환되는지(){
+        XCTAssertEqual("5500".spelloutCurrency(suffix: .none, defaultValue: "0"), "5,500만")
+        XCTAssertEqual("5500".spelloutCurrency(defaultValue: "0"), "5,500만")
+        
+        XCTAssertEqual("510".spelloutCurrency(suffix: .unit, defaultValue: "0"), "510만원")
+        XCTAssertEqual("510".spelloutCurrency(defaultValue: "0"), "510만")
+    }
+    
+    func test_DefaultValue_값지정에따라_단위변환값이_반환되는지(){
+        XCTAssertEqual("".spelloutCurrency(defaultValue: "0"), "0원")
+        XCTAssertEqual("".spelloutCurrency(defaultValue: "1"), "1원")
+        XCTAssertEqual("".spelloutCurrency(defaultValue: "-"), "-원")
+        XCTAssertEqual("".spelloutCurrency(defaultValue: ""), "")
+    }
+    
     func test_단위변환해서_반환되는지() throws {
         XCTAssertEqual(0.55.toDisplay(), "5,500원")
         XCTAssertEqual(0.051.toDisplay(), "510원")
