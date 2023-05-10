@@ -57,6 +57,11 @@ extension String {
         case tenThousand = "만"
         case hundredThousand = "억"
         case trilion = "조"
+        case none = ""
+        public var desc: String {
+            return self.rawValue
+        }
+        
     }
     
     /**
@@ -64,7 +69,9 @@ extension String {
      smallestUnit: 표기 최소 단위
      
      */
-    public func spelloutCurrency(smallestUnit: Unit = .tenThousand) -> String {
+    public func spelloutCurrency(smallestUnit: Unit = .tenThousand,
+                                 suffix: Unit = .none,
+                                 defaultValue: String = "") -> String {
         
         let templateArray = Array(self)
         var tmpArray: [String] = []
@@ -121,7 +128,8 @@ extension String {
             return partialResult + getConvertedString(data: value.element, unit: unit ,smallestUnit: smallestUnit)
         }
         let resultValue =  resultArray.reversed().map({"\($0)"}).joined().replacingOccurrences(of: "-", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
-        return resultValue.isEmpty ? "" : resultValue + "원"
+        
+        return resultValue.isEmpty ? (defaultValue == "" ? "" : "\(defaultValue)원") : resultValue + suffix.desc
     }
     
     private func getConvertedString(data: String, unit: Unit,smallestUnit: Unit) -> String {
@@ -155,6 +163,8 @@ extension String {
                 return " " + Unit.trilion.rawValue + tmpArray
             case .unit:
                 return tmpArray
+            default:
+                return ""
             }
         }else{
             switch unit {
@@ -166,6 +176,8 @@ extension String {
                 return " " + Unit.trilion.rawValue + tmpArray.appendComma()
             case .unit:
                 return tmpArray.appendComma()
+            default:
+                return ""
             }
         }
     }
