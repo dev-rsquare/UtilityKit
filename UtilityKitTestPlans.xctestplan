@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "17AC7BDA-E2E3-4B26-BCBA-0B9EE56CE4B8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true,
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "UtilityKitTests",
+        "name" : "UtilityKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -2,6 +2,28 @@ import XCTest
 @testable import UtilityKit
 
 final class UtilityKitTests: XCTestCase {
+    
+    
+    func test_이메일_유효성검사_성공(){
+        // given
+        let userEmail = "atlas1234@gmail.com"
+        // when
+        let isValidExpression = userEmail.isValidEmail()
+        print(isValidExpression)
+        // then
+        XCTAssertTrue(isValidExpression)
+    }
+    
+    func test_이메일_유효성검사_실패(){
+        // given
+        let userEmail = "atlas1234gmail.com"
+        // when
+        let isValidExpression = userEmail.isValidEmail()
+        
+        // then
+        XCTAssertFalse(isValidExpression)
+    }
+    
     func test_문자열이_이메일_유효성검사_잘반환되는지() throws {
         
         XCTAssertTrue("zz@zz.zz".isValidEmail())
