@@ -32,4 +32,9 @@ Select "Up to Next Major" with 0.0.1
 
 <img width="614" alt="cc" src="https://user-images.githubusercontent.com/67726869/229386290-824ee43c-7b3f-4be2-a9c2-82b556f80673.png">
 
+### validation test coverage 
+<img width="677" alt="스크린샷 2023-07-06 오전 10 54 35" src="https://github.com/dev-rsquare/UtilityKit/assets/67726869/0b49e674-b47a-4f43-852e-6ea4fa32fe44">
+
+
+
 
