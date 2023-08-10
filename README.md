@@ -11,9 +11,8 @@
 **내부 도큐먼트를 보시길 권장드립니다. 
 [도큐먼트](https://web-ios-docs-k19y2kljqnu8ne.sel4.cloudtype.app/docs/category/ios-tutorial---utilitykit)**
 
+## 이메일 유효성검사
 - Use {String}.isValidation() 
-**이메일 유효성검사** 
-
 
 ## Requirement
 
